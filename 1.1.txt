@@ -1,0 +1,122 @@
+//program:1.1
+//programmer:Krishiv patel
+#include <iostream>
+using namespace std ;
+class BankAccount
+{
+    char AccountHolder[20];
+    long int AccountNumber;
+    float Balance;
+    public:
+    void AddDetail()
+    {
+        cout<<"enter the name of holder:"<<endl;
+        cin>>AccountHolder;
+        cout<<"enter the account number of holder:"<<endl;
+        cin>>AccountNumber;
+        cout<<"enter the Balance of holder:"<<endl;
+        cin>>Balance;
+    }
+    void DepositMoney()
+    {
+        float GivenDeposit;
+        cout<<"enter the value which you want to deposit"<<endl;
+        cin>>GivenDeposit;
+        Balance=Balance+GivenDeposit;
+    }
+    int GetAccNum()
+    {
+        return AccountNumber;
+    }
+    void WithdrawMoney()
+    {
+        float MoneyWithdraw;
+        cout<<"enter the amount you want to withdraw"<<endl;
+        cin>>MoneyWithdraw;
+        if (MoneyWithdraw>Balance)
+        {
+            cout<<"insufficient Balance"<<endl;
+        }
+        else
+        {
+            Balance=Balance-MoneyWithdraw;
+            cout<<"you have taken out"<<MoneyWithdraw<<"rupees"<<endl;
+        }
+    
+    }
+    void DisplayDetails()
+    {
+        cout<<"the account name is";
+        cout<<AccountHolder;
+        cout<<"the account number is";
+        cout<<AccountNumber;
+        cout<<"the account Balance is";
+        cout<<Balance;
+    
+    }
+};
+
+int main() 
+{
+    class BankAccount B[5];
+    int choice;
+    long int AccNum;
+    cout <<"--------------------------------";
+    cout << "Enter 1 to add details: ";
+    cout << "Enter 2 to deposit money: ";
+    cout << "Enter 3 to withdraw money: ";
+    cout << "Enter 4 to display details: ";
+    cout<< "else exit";
+    cout: "---------------------------------";
+    next:cin >> choice;
+
+    switch (choice) {
+        case 1:
+            for (int i=0;i<=4;i++)
+            {
+                B[i].AddDetail();
+            }
+            break;
+        case 2:
+            cout<<"enter account number:"<<endl;
+            cin>>AccNum;
+            for (int i=0;i<5;i++)
+            {
+                 if(AccNum==B[i].GetAccNum())
+                 {
+                    B[i].DepositMoney(); 
+                 }
+                 else
+                 {
+                    cout<<"account not found"<<endl;
+                    break;
+                 }
+            }
+           
+            break;
+        case 3:
+            cout<<"enter account number:"<<endl;
+            cin>>AccNum;
+            for (int i=0;i<5;i++)
+            {
+                 if(AccNum==B[i].GetAccNum())
+                 {
+                    B[i].WithdrawMoney(); 
+                 }
+                 else
+                 {
+                    cout<<"account not found"<<endl;
+                 }
+            }
+            break;
+            case 4:
+            int i;
+            B[i].DisplayDetails();
+            break;
+        default:
+            cout << "Invalid choice!" << endl;
+            goto a;
+    }
+    goto next;
+    a:return 0;
+}
