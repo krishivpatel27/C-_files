@@ -1,0 +1,110 @@
+//program:2.1
+//programmer:Krishiv patel
+#include <iostream>
+
+using namespace std;
+
+class Plot{
+public:
+    float length;
+    float width;
+
+    void setDimensions(float l, float w)
+    {
+        length = l;
+        width = w;
+    }
+
+    void updateDimensions(float l, float w) 
+    {
+        length = l;
+        width = w;
+    }
+
+    void display()
+    {
+        float area = length * width;
+        float perimeter = 2 * (length + width);
+        
+        cout << "Length: " << length << ", Width: " << width << endl;
+        cout << "Area: " << area << endl;
+        cout << "Perimeter: " << perimeter << endl;
+    }
+};
+
+int main() {
+    Plot P[10];
+    int numPlots;
+
+    cout << "Enter the number of plots you want to enter (max 10): ";
+    cin >> numPlots;
+
+    if (numPlots < 1 || numPlots > 10) {
+        cout << "Invalid number of plots. Please enter a number between 1 and 10" << endl;
+        return 1;
+    }
+
+    int choice;
+menu:    
+    cout << "\nMenu:\n";
+    cout << "1. Set dimensions for plots\n";
+    cout << "2. Update dimensions for a plot\n";
+    cout << "3. Display a plot\n";
+    cout << "0. Exit\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch (choice) {
+        case 1: {
+            for (int i = 0; i < numPlots; i++) {
+                float length, width;
+                cout << "Enter the length and width for Plot " << (i + 1) << ": ";
+                cin >> length >> width;
+                P[i].setDimensions(length, width);
+            }
+            break;
+        }
+
+        case 2: {
+            int plotNumber;
+            cout << "Enter the plot number to update (1 to " << numPlots << "): ";
+            cin >> plotNumber;
+
+            if (plotNumber < 1 || plotNumber > numPlots) {
+                cout << "Invalid plot number." << endl;
+            } else {
+                float length, width;
+                cout << "Enter the new length and width for Plot " << plotNumber << ": ";
+                cin >> length >> width;
+                P[plotNumber - 1].updateDimensions(length, width);
+            }
+            break;
+        }
+        
+        case 3: {
+            int plotNumber;
+            cout << "Enter the plot number to display (1 to " << numPlots << "): ";
+            cin >> plotNumber;
+
+            if (plotNumber < 1 || plotNumber > numPlots) {
+                cout << "Invalid plot number." << endl;
+            } else {
+                cout << "Plot " << plotNumber << ":" << endl;
+                P[plotNumber - 1].display();
+            }
+            break;
+        }
+        
+
+        case 0:
+            cout << "Exiting the program." << endl;
+            break;
+
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+             
+    }
+    goto menu;
+
+    return 0;
+}
