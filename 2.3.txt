@@ -61,15 +61,14 @@ int main()
     class BankAccount B[5];
     int choice;
     long int AccNum;
-   next:
-    cout <<"--------------------------------"
+    cout <<"--------------------------------";
     cout << "Enter 1 to add details: ";
     cout << "Enter 2 to deposit money: ";
     cout << "Enter 3 to withdraw money: ";
     cout << "Enter 4 to display details: ";
     cout<< "else exit";
-    cout: "---------------------------------"
-    cin >> choice;
+    cout: "---------------------------------";
+    next:cin >> choice;
 
     switch (choice) {
         case 1:
@@ -116,7 +115,7 @@ int main()
             break;
         default:
             cout << "Invalid choice!" << endl;
-            got a:
+            goto a;
     }
     goto next;
     a:return 0;
